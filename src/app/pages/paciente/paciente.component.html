@@ -1,0 +1,44 @@
+<mat-toolbar>Pacientes</mat-toolbar>
+
+<div class="example-container mat-elevation-z8">
+
+  <router-outlet></router-outlet>
+
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar paciente">
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="CODIGO">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.codigo}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="NOMBRE">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRES </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nombre}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="APELLIDO">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> APELLIDOS </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.apellido}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="EDAD">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> EDAD </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.edad}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</div>
+
+<br>
